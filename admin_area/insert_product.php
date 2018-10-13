@@ -8,8 +8,7 @@
 	<!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" media="all" href="styles/style.css" />
-    
+    <link rel="stylesheet" type="text/css" media="all" href="styles/style.css" /> 
 	<title>Untitled Document</title>
 	<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
   <script>tinymce.init({ selector:'textarea' });</script>
@@ -20,7 +19,7 @@
 }
 </style>
 <body bgcolor="#999999">
-	<form method="post" action="insert_product.php" enctype="multipart/form-data">
+	<form method="POST" action="insert_product.php" enctype="multipart/form-data">
 		<table width="700" align="center" border="1" bgcolor="#c7ecee">
 			<tr align="center">
 				<td colspan="2"><h1>Insert New Product:</h1> </td>
@@ -34,7 +33,7 @@
 			<tr>
 				<td align="right"><b>Product Category</b></td>
 				<td>
-                   <select name="product_cart">
+                   <select name="product_cat">
                    	   <option>Select a Category</option>
                            <?php
 
@@ -56,7 +55,7 @@
 			<tr>
 			 <td align="right"><b>Product Brand</b></td>
 			 <td>
-				<select name="product_brand  ">
+				<select name="product_brand">
                  <option>Select Brand</option>	
                    <?php
 
@@ -117,3 +116,75 @@
 
 </body>
 </html>
+<?php
+   if (isset($_POST['insert_product'])) {
+
+   	//Text data variables
+   	  $product_title = $_POST['product_title'];
+   	  $product_cat = $_POST['product_cat'];
+      $product_brand = $_POST['product_brand'];
+      $product_price = $_POST['product_price'];
+      $product_desc = $_POST['product_desc'];
+      $status = 'on';
+      $product_keywords = $_POST['product_keywords'];
+
+      //Image names 
+       $product_img1 = $_FILES['product_img1']['name'];
+       $product_img2 = $_FILES['product_img2']['name'];
+       $product_img3 = $_FILES['product_img3']['name'];
+
+      //Image temp names
+        $temp_name1 = $_FILES['product_img1'];
+        $temp_name2 = $_FILES['product_img2'];
+        $temp_name3 = $_FILES['product_img3'];
+
+       if($product_title=='' OR $product_cat=='' OR $product_brand=='' OR $product_price=='' OR $product_desc=='' OR $product_keywords=='' OR $product_img1=='') {
+
+       	 echo "<script>alert('Please Fill all the fields!')</script>";
+       	 exit();
+       	
+       }
+
+       else{
+
+         //uploading images to its folder
+          move_uploaded_file($temp_name1, "product_images/$product_img1");
+          move_uploaded_file($temp_name2, "product_images/$product_img2");
+          move_uploaded_file($temp_name3, "product_images/$product_img3");
+
+
+         $insert_product = "Insert into Products (cat_id,brand_id,date,product_title,product_img1,product_img2,product_img3,product_price,product_desc,status) values ('$product_cat','$product_brand',NOW(),'$product_title','$product_img1','$product_img2','$product_img3','$product_price','$product_desc','$status')";
+
+         $run_product = mysqli_query($con,$insert_product);
+
+         if ($run_product) {
+         	echo "<script>alert('Product inserted Successfully')</script>";
+         }
+
+
+
+   }
+
+}
+
+ 
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
