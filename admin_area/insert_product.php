@@ -9,6 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" media="all" href="styles/style.css" />
+    
 	<title>Untitled Document</title>
 	<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
   <script>tinymce.init({ selector:'textarea' });</script>
@@ -106,7 +107,7 @@
 			</tr>
 
 			<tr align="center">
-				<td colspan="2"><input type="submit" name="submit" value="submit"> </td>
+				<td colspan="2"><input type="submit" name="insert_product" value="Insert Product"> </td>
 			</tr>
 
 
