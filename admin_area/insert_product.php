@@ -20,7 +20,7 @@
 </style>
 <body bgcolor="#999999">
 	<form method="POST" action="insert_product.php" enctype="multipart/form-data">
-		<table width="700" align="center" border="1" bgcolor="#c7ecee">
+		<table width="700" align="center" border="15" bgcolor="#c7ecee">
 			<tr align="center">
 				<td colspan="2"><h1>Insert New Product:</h1> </td>
 			</tr>
@@ -134,9 +134,9 @@
        $product_img3 = $_FILES['product_img3']['name'];
 
       //Image temp names
-        $temp_name1 = $_FILES['product_img1'];
-        $temp_name2 = $_FILES['product_img2'];
-        $temp_name3 = $_FILES['product_img3'];
+        $temp_name1 = $_FILES['product_img1']['tmp_name'];
+        $temp_name2 = $_FILES['product_img2']['tmp_name'];
+        $temp_name3 = $_FILES['product_img3']['tmp_name'];
 
        if($product_title=='' OR $product_cat=='' OR $product_brand=='' OR $product_price=='' OR $product_desc=='' OR $product_keywords=='' OR $product_img1=='') {
 
@@ -148,9 +148,9 @@
        else{
 
          //uploading images to its folder
-          move_uploaded_file($temp_name1, "product_images/$product_img1");
-          move_uploaded_file($temp_name2, "product_images/$product_img2");
-          move_uploaded_file($temp_name3, "product_images/$product_img3");
+          move_uploaded_file($temp_name1,"product_images/$product_img1");
+          move_uploaded_file($temp_name2,"product_images/$product_img2");
+          move_uploaded_file($temp_name3,"product_images/$product_img3");
 
 
          $insert_product = "Insert into Products (cat_id,brand_id,date,product_title,product_img1,product_img2,product_img3,product_price,product_desc,status) values ('$product_cat','$product_brand',NOW(),'$product_title','$product_img1','$product_img2','$product_img3','$product_price','$product_desc','$status')";
