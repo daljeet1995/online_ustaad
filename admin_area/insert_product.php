@@ -13,6 +13,11 @@
 	<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
   <script>tinymce.init({ selector:'textarea' });</script>
 </head>
+<style>
+	.mce-path {/* CSS */
+    display: none !important;
+}
+</style>
 <body bgcolor="#999999">
 	<form method="post" action="insert_product.php" enctype="multipart/form-data">
 		<table width="700" align="center" border="1" bgcolor="#c7ecee">
