@@ -1,3 +1,7 @@
+<?php
+  include("includes/db.php");
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,23 +54,37 @@
                          <div id="sidebar_title">Categories</div>
 
                          <ul id="cats">
-                             <li><a href="#">Laptops</a></li>
-                             <li><a href="#">Mobile</a></li>
-                             <li><a href="#">Camera</a></li>
-                             <li><a href="#">Tables</a></li>
-                             <li><a href="#">Computers</a></li>
-                             <li><a href="#">Laptops</a></li>
-                             <li><a href="#">Laptops</a></li>
+                            <?php
+
+                             $get_cats = "Select * from categories";
+                              $run_cats = mysqli_query($con, $get_cats);
+                               while ($row_cats= mysqli_fetch_array($run_cats)) {
+                                  $cat_id = $row_cats['cat_id'];
+                                  $cat_title = $row_cats['cat_title'];
+                                  
+                                 echo "<li><a href='index.php?cat=$cat_id'>$cat_title</a></li>";
+
+                               }
+                             
+                            ?> 
                          </ul>
 
                          <div id="sidebar_title">Brands</div>
                                <ul id="cats">
-                                   <li><a href="#">Motorola</a></li>
-                                   <li><a href="#">Samsung</a></li>
-                                   <li><a href="#">Dell</a></li>
-                                   <li><a href="#">Intex</a></li>
-                                   <li><a href="#">Sony</a></li>
+                                <?php
 
+                                 $get_brand = "Select * from brands";
+                                   $run_brands = mysqli_query($con, $get_brand);
+                                     while ($row_brand= mysqli_fetch_array($run_brands)) {
+                                       $brand_id = $row_brand['brand_id'];
+                                       $brand_title = $row_brand['brand_title'];
+                                     
+
+                                    echo "<li><a href='index.php?brand=$brand_id'>$brand_title</a></li>";
+
+                                    }
+                                   
+                                 ?>
                                </ul>    
 
                      </div>
