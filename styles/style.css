@@ -131,6 +131,9 @@ body {
 #cats a {color: #FFF; font-size: 20px; text-decoration: none; margin: 10px; padding: 10px;}
 #cats a:hover {color: #F93; text-decoration: underline; font-weight: bold;}
 
+#headline{background-color: #000; color: #FFF; height: 35px; width: 780px; padding: 10px;}
+#headline_content{float: right;}
+
 
 
 

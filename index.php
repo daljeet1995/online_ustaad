@@ -90,7 +90,15 @@
                      </div>
 
 
-                     <div id="right_content">Right Side Bar</div>
+                     <div id="right_content">
+                          <div id="headline">
+                              <div id="headline_content">
+                                <b>Welcome Guest!</b>
+                                <b style="color: yellow;">Shopping Cart:</b>
+                                <span>- Items: - Price:</span>
+                              </div>
+                          </div>
+                     </div>
 
              </div>
    	   <div class="footer_area">
